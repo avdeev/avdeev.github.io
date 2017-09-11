@@ -1,1 +1,84 @@
-Hello World
+<!doctype html>
+<html lang="ru">
+   <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Алексей Авдеев - front-end разрабочик</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+		<!--[if lte IE 8]><script src="assets/js/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css">
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css"><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css"><![endif]-->
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css"></noscript>
+	</head>
+	<body class="is-loading">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main">
+						<header>
+							<span class="avatar"><img src="images/avatar.jpg" alt="Alexey Avdeev"></span>
+							<h1>Alexey Avdeev</h1>
+							<p>Senior Front-end Developer</p>
+						</header>
+
+						<footer>
+							<ul class="icons">
+								<li><a href="https://vk.com/alexey.avdeev" class="fa-vk">VK</a></li>
+								<li><a href="https://www.linkedin.com/profile/view?id=AAIAAAhhjvkBvZoAViSQgxEXa5ozwZSxkUEKQXU" class="fa-linkedin">Instagram</a></li>
+								<li><a href="http://github.com/avdeev" class="fa-github">GitHub</a></li>
+							</ul>
+						</footer>
+					</section>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<ul class="copyright"></ul>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<!--[if lte IE 8]><script src="assets/js/respond.min.js"></script><![endif]-->
+			<script>
+				if ('addEventListener' in window) {
+					window.addEventListener('load', function() { document.body.className = document.body.className.replace(/\bis-loading\b/, ''); });
+					document.body.className += (navigator.userAgent.match(/(MSIE|rv:11\.0)/) ? ' is-ie' : '');
+				}
+			</script>
+
+			<!-- Yandex.Metrika counter -->
+			<script type="text/javascript">
+			(function (d, w, c) {
+			    (w[c] = w[c] || []).push(function() {
+			        try {
+			            w.yaCounter29136765 = new Ya.Metrika({id:29136765,
+			                    clickmap:true,
+			                    trackLinks:true,
+			                    accurateTrackBounce:true});
+			        } catch(e) { }
+			    });
+
+			    var n = d.getElementsByTagName("script")[0],
+			        s = d.createElement("script"),
+			        f = function () { n.parentNode.insertBefore(s, n); };
+			    s.type = "text/javascript";
+			    s.async = true;
+			    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+			    if (w.opera == "[object Opera]") {
+			        d.addEventListener("DOMContentLoaded", f, false);
+			    } else { f(); }
+			})(document, window, "yandex_metrika_callbacks");
+			</script>
+			<noscript><div><img src="//mc.yandex.ru/watch/29136765" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+			<!-- /Yandex.Metrika counter -->
+
+	</body>
+</html>
