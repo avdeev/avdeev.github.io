@@ -1,26 +1,35 @@
 # AGENTS.md
 
-Personal GitHub Pages site (https://alexey-avdeev.com). Single-page static HTML — no build system, no package manager, no CI, no tests.
+Personal GitHub Pages site (https://alexey-avdeev.com).
 
 ## Deploy
 
 - `master` is production: any push to `master` is live immediately (GitHub Pages user site). No PR preview, no review gate.
+- Active development happens in the `redesign` branch. Do **not** merge/push `redesign` to `master` without explicit approval.
 - `CNAME` at repo root pins the custom domain — never delete or move it.
 
-## Styles: SCSS is source, CSS is compiled output
+## Stack
 
-- `assets/sass/` is the source; `assets/css/main.css` (+ `ie8.css`, `ie9.css`, `noscript.css`) are compiled artifacts — both are committed.
-- Editing only `.scss` does nothing on the live site; editing only `.css` is lost on the next compile. Change the SCSS, recompile, and commit both:
-  `sass assets/sass/main.scss assets/css/main.css` — same for the three other entrypoints (`ie8`, `ie9`, `noscript`); use `--no-source-map` to match the current tree (no `.map` files).
-- Template is HTML5 UP "Identity" (old skel framework, legacy `@import` sass syntax). Modern dart-sass compiles it but emits deprecation warnings — expected, don't "fix" the imports as part of unrelated changes.
+- **Eleventy 3.x (ESM)** generates static HTML from `src/` into `_site/`.
+- **Tailwind CSS 4.x** is compiled via PostCSS (`@tailwindcss/postcss`) from `src/styles/main.css` to `_site/assets/css/main.css`.
+- Nunjucks templates live in `src/_includes/` and `src/_layouts/`.
+- Site data (title, contacts, talks) lives in `src/_data/`.
+
+## Build
+
+```bash
+npm install
+npm run build   # css + site → _site/
+npm start       # dev server with watch
+```
 
 ## Don't touch
 
-- Analytics are intentional, inline in `index.html`: GTM `GTM-P6SW86D` + Yandex.Metrika `29136765`.
+- Analytics are intentional: GTM `GTM-P6SW86D` + Yandex.Metrika `29136765`, inline in templates.
 - `yandex_719c3d8a381534e7.html` (root) is domain-ownership verification — don't delete.
-- IE shims (`assets/js/html5shiv.js`, `respond.min.js`, `PIE.htc`, conditional-comment CSS/JS in `index.html`) look obsolete but are part of the template — removing them is a product decision, not cleanup.
+- `CNAME`, `robots.txt`, `favicon.ico`, `apple-touch-icon.png` are preserved as-is.
 
 ## Verify
 
-- No lint/test pipeline. Serve locally (`python3 -m http.server`) and check the page.
-- `index.html` is Prettier-formatted (`.prettierrc`: 2 spaces, width 120). `404.html` is a standalone page with inline styles and is not Prettier-formatted — don't reformat it as a drive-by.
+- `npm run build` must pass with no errors.
+- Check `_site/` structure, open `_site/index.html` locally, and confirm links + responsive layout.
