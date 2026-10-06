@@ -1,0 +1,24 @@
+{
+  "name": "alexey-avdeev-site",
+  "version": "2.0.0",
+  "description": "Personal site of Alexey Avdeev — CTO, architect, consultant",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build:css": "postcss src/styles/main.css -o _site/assets/css/main.css",
+    "build:site": "eleventy",
+    "build": "npm run clean && npm run build:css && npm run build:site",
+    "watch:css": "postcss src/styles/main.css -o _site/assets/css/main.css --watch",
+    "watch:site": "eleventy --serve --watch",
+    "start": "npm run clean && concurrently \"npm:watch:css\" \"npm:watch:site\"",
+    "clean": "rm -rf _site"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@tailwindcss/postcss": "^4.0.0",
+    "concurrently": "^9.0.0",
+    "postcss": "^8.5.0",
+    "postcss-cli": "^11.0.0",
+    "tailwindcss": "^4.0.0"
+  }
+}
