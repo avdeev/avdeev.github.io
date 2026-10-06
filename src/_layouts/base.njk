@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+  <head>
+    {% include "analytics-gtm-head.njk" %}
+    {% include "head.njk" %}
+  </head>
+  <body>
+    {% include "analytics-gtm-body.njk" %}
+    {% include "header.njk" %}
+    <main id="main">
+      {{ content | safe }}
+    </main>
+    {% include "footer.njk" %}
+    {% include "analytics-yandex.njk" %}
+  </body>
+</html>
