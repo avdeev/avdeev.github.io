@@ -1,0 +1,39 @@
+---
+layout: base.njk
+title: Доклады Алексея Авдеева
+permalink: /talks/
+description: Избранные доклады Алексея Авдеева о разработке, архитектуре, AI и продукте.
+---
+
+<section class="section section--page-header">
+  <div class="container container--narrow">
+    <h1 class="page-title">Доклады</h1>
+    <p class="page-lead">
+      {{ "26 докладов о разработке, архитектуре и экономике технологий. Здесь — избранные записи и слайды." | typo }}
+    </p>
+  </div>
+</section>
+
+<section class="section section--talks">
+  <div class="container container--narrow">
+    <div class="talks-list talks-list--full">
+      {% for talk in talks %}
+        <article class="talk-card talk-card--full">
+          <h2 class="talk-card__title">{{ talk.title }}</h2>
+          <p class="talk-card__event">{{ talk.event }}</p>
+          <p class="talk-card__thesis">{{ talk.theses | typo }}</p>
+          {% if talk.links.slides or talk.links.video %}
+            <div class="talk-card__links">
+              {% if talk.links.video %}
+                <a href="{{ talk.links.video }}" class="talk-card__link" target="_blank" rel="noopener">Видео</a>
+              {% endif %}
+              {% if talk.links.slides %}
+                <a href="{{ talk.links.slides }}" class="talk-card__link" target="_blank" rel="noopener">Слайды</a>
+              {% endif %}
+            </div>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
