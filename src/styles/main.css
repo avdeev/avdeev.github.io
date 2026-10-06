@@ -1,0 +1,475 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #FAF8F5;
+  --color-ink: #1C1917;
+  --color-accent: #0F766E;
+  --color-accent-hover: #115E59;
+  --color-accent-subtle: #CCFBF1;
+  --color-line: #E7E5E4;
+}
+
+:root {
+  color-scheme: light dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-cream text-ink antialiased;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  line-height: 1.65;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    @apply bg-ink text-cream;
+  }
+}
+
+/* Containers */
+.container {
+  @apply mx-auto w-full px-5 sm:px-6 lg:px-8;
+  max-width: 75rem;
+}
+
+.container--narrow {
+  max-width: 44rem;
+}
+
+/* Header */
+.site-header {
+  @apply border-b border-line;
+}
+
+.site-header .container {
+  @apply flex items-center justify-between py-5;
+}
+
+.site-logo {
+  @apply flex items-center gap-3 text-lg font-semibold no-underline;
+  color: inherit;
+}
+
+.site-logo__mark {
+  @apply block h-2.5 w-2.5 rounded-full;
+  background-color: var(--color-accent);
+}
+
+.site-logo__name {
+  letter-spacing: -0.02em;
+}
+
+.site-nav {
+  @apply flex items-center gap-5 sm:gap-7 text-sm;
+}
+
+.site-nav__link {
+  @apply no-underline transition-colors;
+  color: var(--color-ink);
+}
+
+@media (prefers-color-scheme: dark) {
+  .site-nav__link {
+    color: var(--color-cream);
+  }
+}
+
+.site-nav__link:hover,
+.site-nav__link:focus {
+  color: var(--color-accent);
+}
+
+.site-nav__link--external {
+  @apply hidden sm:inline-flex;
+}
+
+/* Hero */
+.hero {
+  @apply py-16 sm:py-20 lg:py-28;
+}
+
+.hero__grid {
+  @apply grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16;
+}
+
+.hero__eyebrow {
+  @apply mb-4 text-sm font-medium tracking-wide uppercase;
+  color: var(--color-accent);
+}
+
+.hero__title {
+  @apply text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl;
+  line-height: 1.15;
+}
+
+.hero__lead {
+  @apply mt-6 text-lg leading-relaxed;
+  color: var(--color-ink);
+  opacity: 0.85;
+}
+
+@media (prefers-color-scheme: dark) {
+  .hero__lead {
+    color: var(--color-cream);
+  }
+}
+
+.hero__actions {
+  @apply mt-8 flex flex-wrap items-center gap-4;
+}
+
+/* Portrait placeholder */
+.hero__portrait {
+  @apply flex justify-center lg:justify-end;
+}
+
+.portrait-placeholder {
+  @apply relative flex h-64 w-64 flex-col items-center justify-center rounded-2xl sm:h-80 sm:w-80;
+  border: 1px dashed var(--color-line);
+  background-image:
+    linear-gradient(to right, var(--color-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+  background-size: 2rem 2rem;
+  background-color: rgba(15, 118, 110, 0.03);
+}
+
+@media (prefers-color-scheme: dark) {
+  .portrait-placeholder {
+    background-color: rgba(204, 251, 241, 0.05);
+  }
+}
+
+.portrait-placeholder__initials {
+  @apply text-4xl font-semibold sm:text-5xl;
+  color: var(--color-accent);
+  opacity: 0.35;
+}
+
+.portrait-placeholder__label {
+  @apply mt-2 text-sm;
+  color: var(--color-ink);
+  opacity: 0.4;
+}
+
+@media (prefers-color-scheme: dark) {
+  .portrait-placeholder__label {
+    color: var(--color-cream);
+  }
+}
+
+/* Sections */
+.section {
+  @apply py-16 sm:py-20 lg:py-24;
+}
+
+.section--services {
+  @apply border-t border-line;
+}
+
+.section--facts {
+  @apply bg-accent-subtle/30;
+}
+
+@media (prefers-color-scheme: dark) {
+  .section--facts {
+    background-color: rgba(204, 251, 241, 0.06);
+  }
+}
+
+.section__header {
+  @apply mb-10 sm:mb-14;
+}
+
+.section__header--center {
+  @apply text-center;
+}
+
+.section__title {
+  @apply text-2xl font-semibold tracking-tight sm:text-3xl;
+}
+
+.section__subtitle {
+  @apply mt-3 max-w-2xl text-base leading-relaxed;
+  opacity: 0.75;
+}
+
+.section__action {
+  @apply mt-10;
+}
+
+/* Buttons */
+.button {
+  @apply inline-flex items-center justify-center rounded-lg px-5 py-3 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-accent/40;
+  text-decoration: none;
+}
+
+.button--primary {
+  background-color: var(--color-accent);
+  color: #ffffff;
+}
+
+.button--primary:hover,
+.button--primary:focus {
+  background-color: var(--color-accent-hover);
+}
+
+.button--secondary {
+  @apply border;
+  border-color: var(--color-line);
+  color: inherit;
+  background-color: transparent;
+}
+
+.button--secondary:hover,
+.button--secondary:focus {
+  background-color: rgba(15, 118, 110, 0.08);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+/* Service cards */
+.services-grid {
+  @apply grid gap-6 sm:grid-cols-2 lg:grid-cols-3;
+}
+
+.service-card {
+  @apply rounded-xl border border-line p-6 sm:p-8 transition-shadow;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+@media (prefers-color-scheme: dark) {
+  .service-card {
+    background-color: rgba(255, 255, 255, 0.03);
+  }
+}
+
+.service-card:hover {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+}
+
+.service-card__number {
+  @apply mb-5 block text-sm font-semibold tabular-nums;
+  color: var(--color-accent);
+}
+
+.service-card__title {
+  @apply text-lg font-semibold leading-snug;
+}
+
+.service-card__text {
+  @apply mt-3 text-sm leading-relaxed;
+  opacity: 0.75;
+}
+
+/* Facts */
+.facts-grid {
+  @apply grid gap-8 sm:grid-cols-2 lg:grid-cols-3;
+}
+
+.fact {
+  @apply text-center;
+}
+
+.fact__value {
+  @apply text-2xl font-semibold tracking-tight sm:text-3xl;
+}
+
+.fact__label {
+  @apply mt-2 text-sm leading-relaxed;
+  opacity: 0.75;
+}
+
+/* Bio */
+.section--bio {
+  @apply border-t border-line;
+}
+
+.bio p {
+  @apply mb-5 text-lg leading-relaxed;
+  opacity: 0.9;
+}
+
+.bio p:last-child {
+  @apply mb-0;
+}
+
+/* Talks */
+.section--talks-teaser {
+  @apply border-t border-line;
+}
+
+.talks-list {
+  @apply grid gap-6;
+}
+
+.talks-list--full {
+  @apply gap-8;
+}
+
+.talk-card {
+  @apply rounded-xl border border-line p-6;
+}
+
+.talk-card--full {
+  @apply sm:p-8;
+}
+
+.talk-card__title {
+  @apply text-lg font-semibold leading-snug sm:text-xl;
+}
+
+.talk-card__event {
+  @apply mt-2 text-sm font-medium;
+  color: var(--color-accent);
+}
+
+.talk-card__thesis {
+  @apply mt-3 text-sm leading-relaxed;
+  opacity: 0.75;
+}
+
+.talk-card__links {
+  @apply mt-4 flex flex-wrap gap-4;
+}
+
+.talk-card__link {
+  @apply text-sm font-medium no-underline;
+  color: var(--color-accent);
+}
+
+.talk-card__link:hover,
+.talk-card__link:focus {
+  color: var(--color-accent-hover);
+  text-decoration: underline;
+}
+
+/* Final CTA */
+.section--cta {
+  @apply border-t border-line;
+}
+
+.final-cta {
+  @apply rounded-2xl border border-line p-8 text-center sm:p-12;
+  background-color: rgba(15, 118, 110, 0.04);
+}
+
+@media (prefers-color-scheme: dark) {
+  .final-cta {
+    background-color: rgba(204, 251, 241, 0.05);
+  }
+}
+
+.final-cta__title {
+  @apply text-2xl font-semibold tracking-tight sm:text-3xl;
+}
+
+.final-cta__text {
+  @apply mx-auto mt-4 max-w-xl text-base leading-relaxed;
+  opacity: 0.8;
+}
+
+.final-cta__actions {
+  @apply mt-8 flex flex-wrap justify-center gap-4;
+}
+
+/* Footer */
+.site-footer {
+  @apply border-t border-line py-8;
+}
+
+.footer__grid {
+  @apply flex flex-col gap-4 text-sm sm:flex-row sm:items-center sm:justify-between;
+}
+
+.footer__colophon {
+  opacity: 0.65;
+}
+
+.footer__colophon a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.footer__contacts {
+  @apply flex flex-wrap items-center gap-2;
+}
+
+.footer__link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer__link:hover,
+.footer__link:focus {
+  color: var(--color-accent);
+}
+
+.footer__separator {
+  opacity: 0.4;
+}
+
+/* Talks page */
+.section--page-header {
+  @apply pb-8 pt-12 sm:pb-10 sm:pt-16;
+}
+
+.page-title {
+  @apply text-3xl font-semibold tracking-tight sm:text-4xl;
+}
+
+.page-lead {
+  @apply mt-4 text-lg leading-relaxed;
+  opacity: 0.8;
+}
+
+/* 404 */
+.section--error {
+  @apply py-24 sm:py-32;
+}
+
+.error-page {
+  @apply text-center;
+}
+
+.error-page__code {
+  @apply text-6xl font-semibold tracking-tighter sm:text-8xl;
+  color: var(--color-accent);
+  opacity: 0.25;
+}
+
+.error-page__title {
+  @apply mt-4 text-2xl font-semibold sm:text-3xl;
+}
+
+.error-page__text {
+  @apply mx-auto mt-4 max-w-md text-base leading-relaxed;
+  opacity: 0.75;
+}
+
+.error-page .button {
+  @apply mt-8;
+}
+
+/* Focus */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
